@@ -8,8 +8,12 @@
 		"jsonl",
 		"llm",
 		"pretty-print",
+		"pretty-printer",
 		"logs",
-		"openai"
+		"openai",
+		"openrouter",
+		"anthropic",
+		"chat-completions"
 	],
 	"license": "MIT",
 	"author": "Paul Kohler",
