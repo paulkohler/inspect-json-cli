@@ -20,6 +20,12 @@ It is not an interactive viewer. It is a terminal renderer that detects common
 shapes, recursively decodes JSON embedded inside JSON strings, and prints the
 useful parts first.
 
+## Install
+
+```sh
+npm i -g inspect-json-cli
+```
+
 ## At a glance
 
 Given a real LLM response whose `message.content` is a JSON string,
