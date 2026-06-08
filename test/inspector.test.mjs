@@ -137,6 +137,30 @@ describe('inspect-json', () => {
 		assert.match(output, /"files": \[/u);
 	});
 
+	it('omits the content block when the content is empty', () => {
+		const output = inspectJson(
+			JSON.stringify({
+				choices: [
+					{
+						finish_reason: 'tool_calls',
+						message: {
+							role: 'assistant',
+							content: '',
+							tool_calls: [
+								{ function: { name: 'go', arguments: '{}' } },
+							],
+						},
+					},
+				],
+			}),
+			{ color: false },
+		);
+
+		assert.match(output, /content: empty string/u);
+		// No blank/indented filler lines between the label and the next field.
+		assert.match(output, /content: empty string\n {2}tool_calls: 1/u);
+	});
+
 	it('renders prose flush-left but keeps decoded JSON indented', () => {
 		const prose = inspectJson(
 			JSON.stringify({

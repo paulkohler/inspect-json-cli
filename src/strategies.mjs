@@ -168,12 +168,16 @@ function renderMessage(out, message, ctx, prefix = '') {
 		const kind = classifyContent(message.content);
 		out.kv(`${prefix}content`, kind);
 		const rendered = renderContent(message.content, ctx);
-		// Prose (text/markdown) reads best flush-left as the raw text; structured
-		// content (decoded JSON) stays indented under its key for scannability.
-		if (kind === 'text' || kind === 'markdown') {
-			out.block(rendered);
-		} else {
-			out.block(indent(rendered, prefix ? 4 : 2));
+		// Skip an all-whitespace block (e.g. an empty assistant message before a
+		// tool call) so the kind label isn't trailed by blank indented lines.
+		if (rendered.trim() !== '') {
+			// Prose (text/markdown) reads best flush-left as the raw text; structured
+			// content (decoded JSON) stays indented under its key for scannability.
+			if (kind === 'text' || kind === 'markdown') {
+				out.block(rendered);
+			} else {
+				out.block(indent(rendered, prefix ? 4 : 2));
+			}
 		}
 	}
 	const toolCalls = message.tool_calls || message.toolCalls;
