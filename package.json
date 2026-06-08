@@ -1,6 +1,6 @@
 {
 	"name": "inspect-json-cli",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Zero-dependency CLI for filtered pretty-printing of JSON-heavy AI logs (LLM requests, responses, JSONL).",
 	"keywords": [
 		"cli",
