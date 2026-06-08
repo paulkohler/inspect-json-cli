@@ -137,6 +137,31 @@ describe('inspect-json', () => {
 		assert.match(output, /"files": \[/u);
 	});
 
+	it('renders prose flush-left but keeps decoded JSON indented', () => {
+		const prose = inspectJson(
+			JSON.stringify({
+				choices: [
+					{ message: { role: 'assistant', content: 'Plain prose answer.' } },
+				],
+			}),
+			{ color: false },
+		);
+		// Text content sits at column 0, not indented under the content key.
+		assert.match(prose, /^Plain prose answer\.$/mu);
+
+		const json = inspectJson(
+			JSON.stringify({
+				choices: [
+					{ message: { role: 'assistant', content: '{"status":"OK"}' } },
+				],
+			}),
+			{ color: false },
+		);
+		// Decoded JSON stays indented for scannability.
+		assert.match(json, /^ {4}\{$/mu);
+		assert.match(json, /^ {6}"status": "OK"$/mu);
+	});
+
 	it('previews long string content by default', () => {
 		const output = inspectJson(
 			JSON.stringify({

@@ -39,7 +39,7 @@ choice[0]
 finish: stop
   role: assistant
   content: text
-    A JSON log is a structured text record formatted as JSON that captures events or data with key‑value pairs, arrays, and nested objects for easy parsing and analysis.
+A JSON log is a structured text record formatted as JSON that captures events or data with key‑value pairs, arrays, and nested objects for easy parsing and analysis.
 ```
 
 ## 2. Tool call — `tool-call-{request,response}.json`

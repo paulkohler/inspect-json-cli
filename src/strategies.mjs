@@ -165,8 +165,16 @@ function renderMessage(out, message, ctx, prefix = '') {
 		out.kv(`${prefix}tool_call_id`, message.tool_call_id);
 	}
 	if (message.content !== undefined && message.content !== null) {
-		out.kv(`${prefix}content`, classifyContent(message.content));
-		out.block(indent(renderContent(message.content, ctx), prefix ? 4 : 2));
+		const kind = classifyContent(message.content);
+		out.kv(`${prefix}content`, kind);
+		const rendered = renderContent(message.content, ctx);
+		// Prose (text/markdown) reads best flush-left as the raw text; structured
+		// content (decoded JSON) stays indented under its key for scannability.
+		if (kind === 'text' || kind === 'markdown') {
+			out.block(rendered);
+		} else {
+			out.block(indent(rendered, prefix ? 4 : 2));
+		}
 	}
 	const toolCalls = message.tool_calls || message.toolCalls;
 	if (Array.isArray(toolCalls) && toolCalls.length > 0) {
