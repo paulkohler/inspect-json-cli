@@ -1,5 +1,9 @@
 # inspect-json-cli
 
+[![CI](https://github.com/paulkohler/inspect-json-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/paulkohler/inspect-json-cli/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/inspect-json-cli.svg)](https://www.npmjs.com/package/inspect-json-cli)
+[![node](https://img.shields.io/node/v/inspect-json-cli.svg)](https://nodejs.org)
+
 `inspect-json` is a zero-dependency Node.js CLI for filtered pretty-printing of
 JSON-heavy AI logs.
 
