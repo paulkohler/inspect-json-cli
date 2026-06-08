@@ -1,0 +1,11 @@
+{
+  "model": "nvidia/nemotron-3-nano-omni",
+  "temperature": 0,
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Return ONLY a JSON object (no prose, no markdown) with keys name (string), born (integer), occupation (string) for: Ada Lovelace, born 1815, mathematician."
+    }
+  ]
+}

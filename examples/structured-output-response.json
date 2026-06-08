@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-4rbeobq3geaq0h9kruqytm",
+  "object": "chat.completion",
+  "created": 1780881137,
+  "model": "nvidia/nemotron-3-nano-omni",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "\n{\n  \"name\": \"Ada Lovelace\",\n  \"born\": 1815,\n  \"occupation\": \"mathematician\"\n}",
+        "reasoning_content": "We need to output only a JSON object, no prose, no markdown. Keys: name (string), born (integer), occupation (string). For Ada Lovelace, born 1815, mathematician.\n\nSo output:\n\n{\n\"name\": \"Ada Lovelace\",\n\"born\": 1815,\n\"occupation\": \"mathematician\"\n}\n\nMake sure integer not string. No extra whitespace? JSON can have spaces; it's fine. Ensure no markdown fences.\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 137,
+    "total_tokens": 195,
+    "completion_tokens_details": {
+      "reasoning_tokens": 101
+    }
+  },
+  "stats": {},
+  "system_fingerprint": "nvidia/nemotron-3-nano-omni"
+}

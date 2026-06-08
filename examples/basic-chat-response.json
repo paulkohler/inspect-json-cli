@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-luxxfunmy2kc5qcb44a0ym",
+  "object": "chat.completion",
+  "created": 1780881132,
+  "model": "nvidia/nemotron-3-nano-omni",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "\nA JSON log is a structured text record formatted as JSON that captures events or data with key‑value pairs, arrays, and nested objects for easy parsing and analysis.",
+        "reasoning_content": "User asks: \"In one sentence, what is a JSON log?\" Need to answer concisely in one sentence. Provide definition.\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 32,
+    "completion_tokens": 63,
+    "total_tokens": 95,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27
+    }
+  },
+  "stats": {},
+  "system_fingerprint": "nvidia/nemotron-3-nano-omni"
+}

@@ -1,0 +1,45 @@
+{
+	"name": "inspect-json-cli",
+	"version": "0.1.0",
+	"description": "Zero-dependency CLI for filtered pretty-printing of JSON-heavy AI logs (LLM requests, responses, JSONL).",
+	"keywords": [
+		"cli",
+		"json",
+		"jsonl",
+		"llm",
+		"pretty-print",
+		"logs",
+		"openai"
+	],
+	"license": "MIT",
+	"author": "Paul Kohler",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/paulkohler/inspect-json-cli.git"
+	},
+	"bugs": {
+		"url": "https://github.com/paulkohler/inspect-json-cli/issues"
+	},
+	"homepage": "https://github.com/paulkohler/inspect-json-cli#readme",
+	"bin": {
+		"inspect-json": "./bin/inspect-json.mjs"
+	},
+	"files": [
+		"bin/",
+		"src/",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"test": "node --test test/*.test.mjs",
+		"check": "node --check bin/*.mjs && node --check src/*.mjs && node --check test/*.mjs && node --check scripts/*.mjs && biome check .",
+		"lint": "biome lint .",
+		"format": "biome format --write --vcs-enabled=true --vcs-use-ignore-file=true bin src test scripts",
+		"examples": "node scripts/generate-examples.mjs",
+		"install-local": "node bin/install-local.mjs"
+	},
+	"engines": {
+		"node": ">=22"
+	}
+}

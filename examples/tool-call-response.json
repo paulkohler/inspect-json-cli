@@ -1,0 +1,38 @@
+{
+  "id": "chatcmpl-3ei3fk3mqjujx3ccj1h2i",
+  "object": "chat.completion",
+  "created": 1780881133,
+  "model": "nvidia/nemotron-3-nano-omni",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "\n",
+        "reasoning_content": "Okay, the user is asking for the weather in Paris, France. Let me check the tools available. There's a function called get_weather that takes location and unit as parameters. The location is required, so I need to make sure to include \"Paris, France\" there. The unit isn't specified, but since it's an enum with celsius or fahrenheit, maybe default to celsius? Wait, the user didn't mention the unit, so should I assume one? The tool requires 'location' but not 'unit', so maybe the function can handle a default. But looking at the parameters, 'unit' isn't in the required list. So I can call the function with just location: \"Paris, France\". Let me make sure that's allowed. Yes, because 'strict' is false, so extra parameters are okay. Wait, no, the 'required' array only has 'location'. So the unit is optional. Therefore, I should call get_weather with location set to Paris, France and maybe omit unit or set a default. But since the user didn't specify, perhaps it's better to include both? Wait, no, the function allows unit to be either celsius or fahrenheit. Since the user didn't specify, maybe just leave it out, but the tool might require one of them. Wait, looking at the parameters again: 'unit' has an enum but isn't in required. So the function can be called without unit. But how does that work? Maybe the default is celsius if not provided. Or maybe the API expects a value. Hmm. The user's query doesn't specify, so perhaps I should proceed with just location. Let me structure the tool call accordingly.\n",
+        "tool_calls": [
+          {
+            "type": "function",
+            "id": "903652631",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"location\":\"Paris, France\"}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 336,
+    "completion_tokens": 378,
+    "total_tokens": 714,
+    "completion_tokens_details": {
+      "reasoning_tokens": 351
+    }
+  },
+  "stats": {},
+  "system_fingerprint": "nvidia/nemotron-3-nano-omni"
+}
