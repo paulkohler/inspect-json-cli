@@ -3,6 +3,15 @@ import { readFile } from 'node:fs/promises';
 import { exit, stderr, stdin, stdout } from 'node:process';
 import { inspectJson, parseArgs, readStdin } from '../src/inspector.mjs';
 
+// Exit quietly when a downstream reader (e.g. `| head`) closes the pipe early,
+// instead of crashing with an unhandled EPIPE. This keeps the tool pipe-safe.
+stdout.on('error', (error) => {
+	if (error.code === 'EPIPE') {
+		exit(0);
+	}
+	throw error;
+});
+
 try {
 	const options = parseArgs(process.argv.slice(2), {
 		colorDefault: Boolean(stdout.isTTY) && !process.env.NO_COLOR,
